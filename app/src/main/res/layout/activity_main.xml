@@ -8,49 +8,5 @@
     tools:context=".MainActivity">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/slideViewPager"
-                android:layout_width="wrap_content"
-                android:layout_height="500dp">
-            </androidx.viewpager.widget.ViewPager>
-
-            <LinearLayout
-                android:id="@+id/dotsLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/slideViewPager"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
-                android:padding="20dp">
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/startBtn"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Getting Started"
-                android:textSize="18sp"
-                android:textAllCaps="false"
-                android:layout_below="@+id/slideViewPager"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/btn_bg"
-                android:visibility="invisible"
-                />
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-
 
 </RelativeLayout>

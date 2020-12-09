@@ -19,6 +19,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -66,12 +67,22 @@ public class LoginActivity extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            phoneNumber,        // Phone number to verify
-                            60,                 // Timeout duration
-                            TimeUnit.SECONDS,   // Unit of timeout
-                            LoginActivity.this,  // Activity (for callback binding)
-                            callbacks);        // OnVerificationStateChangedCallbacksPhoneAuthActivity.java
+//                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
+//                            phoneNumber,        // Phone number to verify
+//                            60,                 // Timeout duration
+//                            TimeUnit.SECONDS,   // Unit of timeout
+//                            LoginActivity.this,  // Activity (for callback binding)
+//                            callbacks);        // OnVerificationStateChangedCallbacksPhoneAuthActivity.java
+
+                    PhoneAuthOptions options =
+                            PhoneAuthOptions.newBuilder(mAuth)
+                                    .setPhoneNumber(phoneNumber)       // Phone number to verify
+                                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                                    .setActivity(LoginActivity.this)                 // Activity (for callback binding)
+                                    .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+                                    .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
+
                 }
             }
         });
@@ -158,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) { //  it means user provide correct code
                             loadingBar.dismiss();
                             Toast.makeText(LoginActivity.this, "Congratulations, you're logged in successfully...", Toast.LENGTH_SHORT).show();
-//                            SendUserToMainActivity();
+                            SendUserToMainActivity();
                         } else {
                             String message = task.getException().toString();
                             Toast.makeText(LoginActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
