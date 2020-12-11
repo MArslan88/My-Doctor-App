@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button SendVerificationCodeButton, VerifyButton;
     private EditText InputPhoneNumber, InputVerificationCode;
+    private TextView skipTxt;
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private FirebaseAuth mAuth;
@@ -51,6 +53,16 @@ public class LoginActivity extends AppCompatActivity {
         VerifyButton= (Button)findViewById(R.id.verify_button);
         InputPhoneNumber = (EditText) findViewById(R.id.phone_number_input);
         InputVerificationCode = (EditText) findViewById(R.id.verification_code_input);
+        skipTxt = findViewById(R.id.skipTxt);
+
+        // Skip Text clickListener
+        skipTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SendUserToMainActivity();
+            }
+        });
+
         loadingBar = new ProgressDialog(this);
 
         SendVerificationCodeButton.setOnClickListener(new View.OnClickListener() {
