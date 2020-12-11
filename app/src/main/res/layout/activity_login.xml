@@ -78,7 +78,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:background="@drawable/btn_bg"
+                android:windowBackground="@drawable/btn_bg"
                 />
             <Button
                 android:id="@+id/verify_button"

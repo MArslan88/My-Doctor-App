@@ -106,11 +106,8 @@ public class LoginActivity extends AppCompatActivity {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, verificationCode);
                     signInWithPhoneAuthCredential(credential);
                 }
-
             }
         });
-
-
 
 
         callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -154,10 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                 // to VISIBLE the button and EditText for verify code, after sending verification code
                 VerifyButton.setVisibility(View.VISIBLE);
                 InputVerificationCode.setVisibility(View.VISIBLE);
-
-
             }
-
         };
     }
 
