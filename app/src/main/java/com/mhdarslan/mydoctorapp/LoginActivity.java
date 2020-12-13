@@ -19,9 +19,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private DatabaseReference RootRef;
 
     private ProgressDialog loadingBar;
 
@@ -48,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Login");
 
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        RootRef= FirebaseDatabase.getInstance().getReference();
 
         SendVerificationCodeButton = (Button)findViewById(R.id.send_ver_code_button);
         VerifyButton= (Button)findViewById(R.id.verify_button);
@@ -86,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
 //                            LoginActivity.this,  // Activity (for callback binding)
 //                            callbacks);        // OnVerificationStateChangedCallbacksPhoneAuthActivity.java
 
+
+
                     PhoneAuthOptions options =
                             PhoneAuthOptions.newBuilder(mAuth)
                                     .setPhoneNumber(phoneNumber)       // Phone number to verify
@@ -117,7 +126,19 @@ public class LoginActivity extends AppCompatActivity {
 
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, verificationCode);
                     signInWithPhoneAuthCredential(credential);
+
+                    if(currentUser !=null){
+                        // to add the user id into the Firebase realtime database Users-> Uid
+                        String currentUserID = mAuth.getCurrentUser().getUid();
+                        RootRef.child("Users").child(currentUserID).setValue("");
+                    }else {
+//                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+//                        signInWithPhoneAuthCredential(credential);
+
+                    }
+                    
                 }
+
             }
         });
 
@@ -167,6 +188,8 @@ public class LoginActivity extends AppCompatActivity {
         };
     }
 
+
+
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -174,7 +197,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { //  it means user provide correct code
                             loadingBar.dismiss();
-                            Toast.makeText(LoginActivity.this, "Congratulations, you're logged in successfully...", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginActivity.this, "Congratulations, you're logged in successfully...", Toast.LENGTH_SHORT).show();
+
                             SendUserToMainActivity();
                         } else {
                             String message = task.getException().toString();
