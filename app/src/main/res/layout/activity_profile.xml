@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/profileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Setup Profile"
+                android:textSize="32sp"
+                android:textColor="@color/text_sky_blue"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"/>
+
+            <ImageView
+                android:id="@+id/userImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon"
+                android:layout_below="@+id/profileText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:id="@+id/fnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:textColor="@color/dot_green"
+                android:textSize="14sp"
+                android:layout_below="@+id/userImg"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                />
+            <EditText
+                android:id="@+id/fnInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="Please enter your first name"
+                android:textColor="@color/text_sky_blue"
+                android:paddingLeft="20dp"
+                android:background="@drawable/input_grey"
+                android:layout_below="@id/fnText"
+                android:inputType="text"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/lnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name"
+                android:textColor="@color/dot_green"
+                android:textSize="14sp"
+                android:layout_below="@+id/fnInput"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                />
+            <EditText
+                android:id="@+id/lnInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="Please enter your last name"
+                android:textColor="@color/text_sky_blue"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:background="@drawable/input_grey"
+                android:layout_below="@id/lnText"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/phText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="@color/dot_green"
+                android:textSize="14sp"
+                android:layout_below="@+id/lnInput"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <EditText
+                android:id="@+id/phInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/phText"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/input_grey"
+                android:hint="Please enter your phone number"
+                android:textColor="@color/text_sky_blue"
+                android:inputType="phone"
+                android:paddingLeft="20dp" />
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:layout_below="@+id/phInput"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/btn_bg"
+                />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
