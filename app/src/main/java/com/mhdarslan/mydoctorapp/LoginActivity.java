@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else{
                     loadingBar.setTitle("Phone Verification");
-                    loadingBar.setMessage("Please wait, while we are authenticationg your phone...");
+                    loadingBar.setMessage("Please wait, while we are authenticating your phone...");
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
@@ -92,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
 //                            TimeUnit.SECONDS,   // Unit of timeout
 //                            LoginActivity.this,  // Activity (for callback binding)
 //                            callbacks);        // OnVerificationStateChangedCallbacksPhoneAuthActivity.java
-
-
 
                     PhoneAuthOptions options =
                             PhoneAuthOptions.newBuilder(mAuth)

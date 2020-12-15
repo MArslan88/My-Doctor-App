@@ -13,6 +13,7 @@
     <color name="text_color">#3D3D3D</color>
     <color name="text_blue">#19769F</color>
     <color name="text_sky_blue">#2095F2</color>
+    <color name="health_diary_bg">#54EEBE20</color>
 
     <color name="gradient_start">#19769F</color>
     <color name="gradient_end">#35D8A6</color>

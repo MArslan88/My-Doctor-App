@@ -2,6 +2,7 @@ package com.mhdarslan.mydoctorapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -29,14 +30,26 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
+    private CardView healthDiaryCardView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        healthDiaryCardView = findViewById(R.id.healthDiaryCardView);
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         RootRef = FirebaseDatabase.getInstance().getReference();
+
+        healthDiaryCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent healthDiaryIntent = new Intent(getApplicationContext(),HealthDiaryActivity.class);
+                startActivity(healthDiaryIntent);
+            }
+        });
 
     }
 

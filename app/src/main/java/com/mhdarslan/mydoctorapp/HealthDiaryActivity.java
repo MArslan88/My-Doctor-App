@@ -22,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class ProfileActivity extends AppCompatActivity {
+public class HealthDiaryActivity extends AppCompatActivity {
 
-    private EditText fnInput, lnInput, phInput;
-    private Button updateBtn;
+    private Button homeDiaryUpdateBtn;
+    private EditText homeDiaryInput;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
@@ -33,10 +33,10 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_health_diary);
 
         // Title of the activity
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Home Diary");
 
         // Initialization
         mAuth= FirebaseAuth.getInstance();
@@ -44,40 +44,37 @@ public class ProfileActivity extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.keepSynced(true);
 
-        fnInput = findViewById(R.id.fnInput);
-        lnInput = findViewById(R.id.lnInput);
-        phInput = findViewById(R.id.phInput);
-        updateBtn = findViewById(R.id.updateBtn);
+        homeDiaryInput = findViewById(R.id.homeDiaryInput);
+        homeDiaryUpdateBtn = findViewById(R.id.homeDiaryUpdateBtn);
 
-        updateBtn.setOnClickListener(new View.OnClickListener() {
+        homeDiaryUpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateProfile();
+                UpdateNote();
             }
         });
 
-        RetrieveUserInfo();
+        // Retrieve Note Info
+        RetrieveNoteInfo();
+
+
 
     }
 
-    private void RetrieveUserInfo() {
-        RootRef.child("Users").child(currentUserID)
+    private void RetrieveNoteInfo() {
+        RootRef.child("Notes").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if((dataSnapshot.exists()) && (dataSnapshot.hasChild("fname") && (dataSnapshot.hasChild("lname")))){ // if user is updated his profile then
+                        if((dataSnapshot.exists()) && (dataSnapshot.hasChild("note"))){ // if user is updated his Note then
 
-                            String retrieveFirstName = dataSnapshot.child("fname").getValue().toString();
-                            String retrieveLastAddress = dataSnapshot.child("lname").getValue().toString();
-                            String retrieveUserNumber = dataSnapshot.child("number").getValue().toString();
+                            String retrieveDiaryNote = dataSnapshot.child("note").getValue().toString();
 
                             // retrieveUserName will be shown to userName EditText again
-                            fnInput.setText(retrieveFirstName);
-                            lnInput.setText(retrieveLastAddress);
-                            phInput.setText(retrieveUserNumber);
+                            homeDiaryInput.setText(retrieveDiaryNote);
 
                         }else{ // if none of these exist
-                            Toast.makeText(ProfileActivity.this, "Please update your information...!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HealthDiaryActivity.this, "Please update your information...!", Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override
@@ -86,36 +83,26 @@ public class ProfileActivity extends AppCompatActivity {
                 });
     }
 
-    private void UpdateProfile() {
-        String setFirstName = fnInput.getText().toString();
-        String setLastName = lnInput.getText().toString();
-        String setUserNumber = phInput.getText().toString();
+    private void UpdateNote() {
+        String diaryNote = homeDiaryInput.getText().toString();
 
-        if(TextUtils.isEmpty(setFirstName)){
-            Toast.makeText(this, "Please write your First Name", Toast.LENGTH_SHORT).show();
-        }
-        if(TextUtils.isEmpty(setLastName)){
-            Toast.makeText(this, "Please write your Last Name", Toast.LENGTH_SHORT).show();
-        }
-        if(TextUtils.isEmpty(setUserNumber)){
-            Toast.makeText(this, "Please write your Number", Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(diaryNote)){
+            Toast.makeText(this, "Please write your Note first.", Toast.LENGTH_SHORT).show();
         }else{ // if all the fields are not empty then we will send this data to the FireBase database by using HashMap
-            HashMap<String,String> profileMap = new HashMap<>();
-            profileMap.put("uid",currentUserID);
-            profileMap.put("fname",setFirstName);
-            profileMap.put("lname",setLastName);
-            profileMap.put("number",setUserNumber);
+            HashMap<String,String> diaryNoteMap = new HashMap<>();
+            diaryNoteMap.put("uid",currentUserID);
+            diaryNoteMap.put("note",diaryNote);
 
-            RootRef.child("Users").child(currentUserID).setValue(profileMap)
+            RootRef.child("Notes").child(currentUserID).setValue(diaryNoteMap)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 SendUserToMainActivity();
-                                Toast.makeText(ProfileActivity.this, "Profile update successfully...!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HealthDiaryActivity.this, "Note update successfully...!", Toast.LENGTH_SHORT).show();
                             }else{// if any Error occure
                                 String message = task.getException().toString();
-                                Toast.makeText(ProfileActivity.this, "Error: "+ message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HealthDiaryActivity.this, "Error: "+ message, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -123,7 +110,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void SendUserToMainActivity() {
-        Intent mainIntent = new Intent(ProfileActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(HealthDiaryActivity.this, MainActivity.class);
 
         // this will stop the user to get again the PhoneLoginActivity when user press the back button
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
