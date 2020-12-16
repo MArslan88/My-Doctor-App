@@ -2,22 +2,29 @@ package com.mhdarslan.mydoctorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class HomeTreatmentActivity extends AppCompatActivity {
 
     private ListView homeTreatmentlv;
+    public static String[] listOfDiseases;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_treatment);
 
+        // Title of the activity
+        getSupportActionBar().setTitle("List of Diseases");
+
         homeTreatmentlv = findViewById(R.id.homeTreatmentlv);
 
-        String[] listOfDiseases = {
+        listOfDiseases = new String[] {
                 "Headache",
                 "Fever",
                 "Cough",
@@ -40,9 +47,20 @@ public class HomeTreatmentActivity extends AppCompatActivity {
                 "Depression"
         };
 
+
+
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,listOfDiseases);
         homeTreatmentlv.setAdapter(adapter);
 
+        // clickListener
+        homeTreatmentlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // open the DetailActivity with position data of the clicked list item
+                startActivity(new Intent(getApplicationContext(),DetailActivity.class).putExtra("position",position));
+            }
+        });
 
     }
 }
