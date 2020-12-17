@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private CardView healthDiaryCardView, homeTreatmentCardView;
+    private CardView healthDiaryCardView, homeTreatmentCardView, prevGuideCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         healthDiaryCardView = findViewById(R.id.healthDiaryCardView);
         homeTreatmentCardView = findViewById(R.id.homeTreatmentCardView);
+        prevGuideCardView = findViewById(R.id.prevGuideCardView);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -57,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent homeTreatmentIntent = new Intent(getApplicationContext(),HomeTreatmentActivity.class);
                 startActivity(homeTreatmentIntent);
+            }
+        });
+
+        // prevGuideCardView click listener
+        prevGuideCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent prevGuideIntent = new Intent(getApplicationContext(),PrevGuidelineActivity.class);
+                startActivity(prevGuideIntent);
             }
         });
 

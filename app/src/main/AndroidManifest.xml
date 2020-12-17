@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDoctorApp">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".GuidelinesActivity"
+            android:parentActivityName=".PrevGuidelineActivity"></activity>
+        <activity android:name=".PrevGuidelineActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".DetailActivity"
+            android:parentActivityName=".HomeTreatmentActivity" />
         <activity
             android:name=".HomeTreatmentActivity"
             android:parentActivityName=".MainActivity" />

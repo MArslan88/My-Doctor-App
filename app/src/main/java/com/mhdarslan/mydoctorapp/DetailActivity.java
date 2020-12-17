@@ -9,14 +9,14 @@ import android.widget.TextView;
 public class DetailActivity extends AppCompatActivity {
 
     private int positionDiseases;
-    private TextView headingText;
+    private TextView detailsHeadingTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        headingText = findViewById(R.id.headingText);
+        detailsHeadingTxt = findViewById(R.id.detailsHeadingTxt);
 
         Intent intent = getIntent();
         positionDiseases = intent.getIntExtra("position",0);
@@ -24,7 +24,7 @@ public class DetailActivity extends AppCompatActivity {
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle(HomeTreatmentActivity.listOfDiseases[positionDiseases]);
 
-        headingText.setText("Get to know about \n"+HomeTreatmentActivity.listOfDiseases[positionDiseases]);
+        detailsHeadingTxt.setText("Get to know about \n"+HomeTreatmentActivity.listOfDiseases[positionDiseases]);
 
 
     }
