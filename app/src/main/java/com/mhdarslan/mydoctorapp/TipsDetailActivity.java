@@ -86,8 +86,6 @@ public class TipsDetailActivity extends AppCompatActivity {
                         "•\tSkim Milk: provides plenty of protein, calcium, and vitamin D with none of the fat found in whole milk.\n" +
                         "•\tFish: One of the best sources of protein is fish. Most fish is low in fat, and the exceptions usually have a good form of fat: omega-3 fatty acids. Omega-3s, which are found in salmon, herring, and other fatty fish, may help protect against heart disease and other chronic conditions.\n" +
                         "•\tBeans: are a vegetable, a protein, and a great source of fiber. You feel full for very few calories.\n"
-
-
         };
 
         healthTipsHeadingTxt.setText(HealthTipsActivity.headings[positionTips]);
