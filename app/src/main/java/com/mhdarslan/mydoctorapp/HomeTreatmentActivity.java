@@ -44,7 +44,7 @@ public class HomeTreatmentActivity extends AppCompatActivity {
                 "High Blood Pressure",
                 "Acne",
                 "Constipation",
-                "Depression"
+                "Depression",
         };
 
 

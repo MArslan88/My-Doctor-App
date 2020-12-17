@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/detail_bg"
     tools:context=".DetailActivity">
-
     <TextView
         android:id="@+id/detailsHeadingTxt"
         android:layout_width="wrap_content"
@@ -19,39 +18,102 @@
         android:layout_marginLeft="170dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"/>
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="200dp">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <TextView
                 android:id="@+id/introHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Health Tips"
+                android:text="Intro"
                 android:textSize="24sp"
                 android:textColor="@color/text_orrange"
                 android:layout_marginLeft="20dp"/>
-
             <TextView
-                android:id="@+id/tipsText"
+                android:id="@+id/introText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Demo Text"
+                android:text="Intro Demo Text"
                 android:textColor="@color/text_gray"
                 android:layout_below="@+id/introHeading"
                 android:textSize="16sp"
                 android:layout_margin="20dp"/>
-
+            <TextView
+                android:id="@+id/causesHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Causes"
+                android:textSize="24sp"
+                android:textColor="@color/text_orrange"
+                android:layout_below="@+id/introText"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/causesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Causes Demo Text"
+                android:textColor="@color/text_gray"
+                android:layout_below="@+id/causesHeading"
+                android:textSize="16sp"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/symptomsHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Symptoms"
+                android:textSize="24sp"
+                android:textColor="@color/text_orrange"
+                android:layout_below="@+id/causesText"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/symptomsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Symptoms Demo Text"
+                android:textColor="@color/text_gray"
+                android:layout_below="@+id/symptomsHeading"
+                android:textSize="16sp"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/homeRemedyHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Remedy"
+                android:textSize="24sp"
+                android:textColor="@color/text_orrange"
+                android:layout_below="@+id/symptomsText"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/homeRemedyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Home Remedy Demo Text"
+                android:textColor="@color/text_gray"
+                android:layout_below="@+id/homeRemedyHeading"
+                android:textSize="16sp"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/tibeNabviHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tib e Nabvi"
+                android:textSize="24sp"
+                android:textColor="@color/text_orrange"
+                android:layout_below="@+id/homeRemedyText"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/tibeNabviText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tib e Nabvi Demo Text"
+                android:textColor="@color/text_gray"
+                android:layout_below="@+id/tibeNabviHeading"
+                android:textSize="16sp"
+                android:layout_margin="20dp"/>
         </RelativeLayout>
-
     </ScrollView>
-
 </RelativeLayout>
