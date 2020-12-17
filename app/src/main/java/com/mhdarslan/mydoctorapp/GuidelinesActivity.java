@@ -27,6 +27,7 @@ public class GuidelinesActivity extends AppCompatActivity {
         guidelineHeadingTxt = findViewById(R.id.guidelineHeadingTxt);
         guidelinesText = findViewById(R.id.guidelinesText);
 
+        // Guideline Array
         String[] guidelinesArr = {
                 "•\tWash your hands well.\n" +
                         "•\tCover a cough.\n" +
@@ -79,9 +80,5 @@ public class GuidelinesActivity extends AppCompatActivity {
 
         guidelineHeadingTxt.setText(PrevGuidelineActivity.headings[positionTips]);
         guidelinesText.setText(guidelinesArr[positionTips]);
-
-
-
-
     }
 }

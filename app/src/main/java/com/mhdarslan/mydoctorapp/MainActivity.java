@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private CardView healthDiaryCardView, homeTreatmentCardView, prevGuideCardView;
+    private CardView healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +40,15 @@ public class MainActivity extends AppCompatActivity {
         healthDiaryCardView = findViewById(R.id.healthDiaryCardView);
         homeTreatmentCardView = findViewById(R.id.homeTreatmentCardView);
         prevGuideCardView = findViewById(R.id.prevGuideCardView);
+        healthTipsCardView = findViewById(R.id.healthTipsCardView);
+        disAvoidanceCardView = findViewById(R.id.disAvoidanceCardView);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         RootRef = FirebaseDatabase.getInstance().getReference();
 
+
+        // healthDiaryCardView click listener
         healthDiaryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // homeTreatmentCardView click listener
         homeTreatmentCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +72,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent prevGuideIntent = new Intent(getApplicationContext(),PrevGuidelineActivity.class);
                 startActivity(prevGuideIntent);
+            }
+        });
+
+        // healthTipsCardView click listener
+        healthTipsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent healthTipsIntent = new Intent(getApplicationContext(),HealthTipsActivity.class);
+                startActivity(healthTipsIntent);
+            }
+        });
+
+        // disAvoidanceCardView click listener
+        disAvoidanceCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent disAvoidanceIntent = new Intent(getApplicationContext(),HealthTipsActivity.class);
+//                startActivity(disAvoidanceIntent);
             }
         });
 

@@ -37,12 +37,12 @@ public class PrevGuidelineActivity extends AppCompatActivity {
         };
 
         String [] descriptions = {
-            "Avoid direct contact with napkins, tissues, handkerchiefs, or similar items used by others",
-            "Rinse all meat, poultry, fish, fruits, and vegetables under running water before cooking or serving them.",
-            "When traveling abroad, check with your health care provider about additional immunizations.",
-            "If you are traveling to an area where insect-borne disease is present, take and use an insect repellent containing DEET",
-            "Limit outdoor activity during peak mosquito hours of early morning and evening.",
-            "Stay clear of wild animals. Many wild animals, including raccoons, skunks, bats, foxes, and coyotes, can spread rabies to humans by biting.",
+            "Don't share dishes, glasses, or eating utensils.",
+            "Defrost foods only in the refrigerator or in the microwave.",
+            "Children should receive the recommended childhood vaccinations.",
+            "Boil all tap water before drinking or drink only bottled water.",
+            "Use insect repellents approved by the Environmental Protection Agency",
+            "Keep food and garbage in covered, rodent-proof containers.",
             "Don’t share personal items like phones, makeup, combs"
         };
 
