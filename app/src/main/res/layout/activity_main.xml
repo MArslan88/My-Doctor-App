@@ -201,7 +201,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="prevention Guidlines"
+                            android:text="Prevention Guidlines"
                             android:textColor="@color/text_color"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

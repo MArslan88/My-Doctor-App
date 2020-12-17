@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class PrevGuidelineActivity extends AppCompatActivity {
 
-    ArrayList<Word> tipsModels;
+    ArrayList<Word> guidelinesModels;
     ListView prev_guide_lv;
     public static String [] headings;
 
@@ -47,10 +47,10 @@ public class PrevGuidelineActivity extends AppCompatActivity {
         };
 
         // Initialize Arraylist
-        tipsModels = new ArrayList<>();
+        guidelinesModels = new ArrayList<>();
         for(int i=0; i<headings.length; i++){
             Word words = new Word(headings[i],descriptions[i]);
-            tipsModels.add(words);
+            guidelinesModels.add(words);
         }
 
         //set onItem ClickListener
@@ -63,7 +63,7 @@ public class PrevGuidelineActivity extends AppCompatActivity {
         });
 
         // ArrayAdapter
-        GuidelineAdapter guidelineAdapter = new GuidelineAdapter(this,tipsModels);
+        GuidelineAdapter guidelineAdapter = new GuidelineAdapter(this,guidelinesModels);
         prev_guide_lv.setAdapter(guidelineAdapter);
     }
 }
