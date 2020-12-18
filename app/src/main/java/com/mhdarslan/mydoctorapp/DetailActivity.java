@@ -31,7 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle(HomeTreatmentActivity.listOfDiseases[positionDiseases]);
 
-        // main heading Text according to Intent position
+        // Main heading Text according to Intent position
         detailsHeadingTxt.setText("Get to know about \n"+HomeTreatmentActivity.listOfDiseases[positionDiseases]);
 
         // Intro Array data
@@ -667,7 +667,6 @@ public class DetailActivity extends AppCompatActivity {
                         "                                                                                                         [Muslim: 2216; Book. 39; English Book. 26; Hadees. 5491]\n"
 
                 };
-
 
 
 
