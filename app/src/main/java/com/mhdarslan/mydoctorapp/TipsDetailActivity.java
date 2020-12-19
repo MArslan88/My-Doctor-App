@@ -16,7 +16,7 @@ public class TipsDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tips_detail);
 
-        // Title of the Activity according to Intent position
+        // Title of the Activity
         getSupportActionBar().setTitle("Health Tips");
 
         // get Intent position data from the previous Activity

@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         disAvoidanceCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent disAvoidanceIntent = new Intent(getApplicationContext(),HealthTipsActivity.class);
-//                startActivity(disAvoidanceIntent);
+                Intent disAvoidanceIntent = new Intent(getApplicationContext(),PrecautionsActivity.class);
+                startActivity(disAvoidanceIntent);
             }
         });
 

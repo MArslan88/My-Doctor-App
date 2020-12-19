@@ -11,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDoctorApp">
-        <activity android:name=".TipsDetailActivity"
-            android:parentActivityName=".HealthTipsActivity"></activity>
-        <activity android:name=".HealthTipsActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PrecautionsDetailActivity"
+            android:parentActivityName=".PrecautionsActivity"></activity>
+        <activity android:name=".PrecautionsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TipsDetailActivity"
+            android:parentActivityName=".HealthTipsActivity" />
+        <activity
+            android:name=".HealthTipsActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GuidelinesActivity"
             android:parentActivityName=".PrevGuidelineActivity" />
