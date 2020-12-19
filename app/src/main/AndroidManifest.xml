@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDoctorApp">
-        <activity android:name=".PrecautionsDetailActivity"
-            android:parentActivityName=".PrecautionsActivity"></activity>
-        <activity android:name=".PrecautionsActivity"
+        <activity android:name=".ChatActivity"></activity>
+        <activity
+            android:name=".PrecautionsDetailActivity"
+            android:parentActivityName=".PrecautionsActivity" />
+        <activity
+            android:name=".PrecautionsActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TipsDetailActivity"

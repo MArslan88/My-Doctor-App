@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private CardView healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
+    private CardView chatCardView,healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        chatCardView = findViewById(R.id.chatCardView);
         healthDiaryCardView = findViewById(R.id.healthDiaryCardView);
         homeTreatmentCardView = findViewById(R.id.homeTreatmentCardView);
         prevGuideCardView = findViewById(R.id.prevGuideCardView);
@@ -47,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         RootRef = FirebaseDatabase.getInstance().getReference();
 
+        // Chat CardView click listener
+        chatCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatIntent = new Intent(getApplicationContext(),ChatActivity.class);
+                chatIntent.putExtra("userid",currentUser.getUid());
+                startActivity(chatIntent);
+            }
+        });
 
         // healthDiaryCardView click listener
         healthDiaryCardView.setOnClickListener(new View.OnClickListener() {
