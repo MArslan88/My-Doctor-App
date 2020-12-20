@@ -66,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         skipTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToMainActivity();
+//                SendUserToMainActivity();
+                Toast.makeText(LoginActivity.this, "Not functional right now!", Toast.LENGTH_SHORT).show();
             }
         });
 

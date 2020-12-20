@@ -17,6 +17,8 @@
     <color name="text_orrange">#FB7268</color>
     <color name="health_diary_bg">#54EEBE20</color>
 
+    <color name="bg_gray">#F5F5F5</color>
+
     <color name="gradient_start">#19769F</color>
     <color name="gradient_end">#35D8A6</color>
 

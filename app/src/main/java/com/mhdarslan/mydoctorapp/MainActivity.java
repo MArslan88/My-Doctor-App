@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private CardView chatCardView,healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
+    private CardView covidTrackerCardView, chatCardView,healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        covidTrackerCardView = findViewById(R.id.covidTrackerCardView);
         chatCardView = findViewById(R.id.chatCardView);
         healthDiaryCardView = findViewById(R.id.healthDiaryCardView);
         homeTreatmentCardView = findViewById(R.id.homeTreatmentCardView);
@@ -47,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         RootRef = FirebaseDatabase.getInstance().getReference();
+
+        // Covid Tracker CardView click listener
+        covidTrackerCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Not functional right now!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Chat CardView click listener
         chatCardView.setOnClickListener(new View.OnClickListener() {
