@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private CardView covidTrackerCardView, chatCardView,healthDiaryCardView, homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
+    private CardView covidTrackerCardView, chatCardView,healthDiaryCardView,
+            homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -66,8 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         skipTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                SendUserToMainActivity();
-                Toast.makeText(LoginActivity.this, "Not functional right now!", Toast.LENGTH_SHORT).show();
+                SendUserToMainActivity2();
             }
         });
 
@@ -214,5 +213,10 @@ public class LoginActivity extends AppCompatActivity {
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish(); // part of addFlags line
+    }
+
+    private void SendUserToMainActivity2() {
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity2.class);
+        startActivity(mainIntent);
     }
 }
