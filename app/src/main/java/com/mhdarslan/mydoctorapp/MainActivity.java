@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mhdarslan.mydoctorapp.covidtracker.CovidTrackerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         covidTrackerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Not functional right now!", Toast.LENGTH_SHORT).show();
+                Intent covidIntent = new Intent(getApplicationContext(), CovidTrackerActivity.class);
+                startActivity(covidIntent);
             }
         });
 

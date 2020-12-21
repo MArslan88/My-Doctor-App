@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDoctorApp">
-        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".covidtracker.DetailActivity"></activity>
+        <activity android:name=".covidtracker.AffectedCountries" />
+        <activity android:name=".covidtracker.CovidTrackerActivity" />
+        <activity android:name=".ChatActivity" />
         <activity
             android:name=".PrecautionsDetailActivity"
             android:parentActivityName=".PrecautionsActivity" />
