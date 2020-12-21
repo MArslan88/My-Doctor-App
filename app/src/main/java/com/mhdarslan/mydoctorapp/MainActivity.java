@@ -1,10 +1,12 @@
 package com.mhdarslan.mydoctorapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -169,8 +171,29 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.main_profile_option){  // this is for profile option menu
             sendUserToProfileActivity();
         }
+        if(item.getItemId() == R.id.main_about_option){  // this is for profile option menu
+            startLoader();
+        }
         
         return true;
+    }
+
+    private void startLoader() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Version 1.0\n" +
+                "This is a HOME TREATMENT app for health. This app is developed by Mr. Naeem Mehmood Tariq and Ms. Aimen Abdullah as a Final year project at University of Kotli AJK in Program Software Engineering session 2016-20")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.setTitle("My Doctor App");
+        alert.show();
     }
 
     private void sendUserToLoginActivity() {
