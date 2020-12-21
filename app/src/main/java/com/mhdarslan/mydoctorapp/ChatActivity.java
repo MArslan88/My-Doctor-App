@@ -29,7 +29,10 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity {
 
     FirebaseUser fuser;
-    DatabaseReference reference;
+    private String currentUserID;
+    private String receiverName;
+    private FirebaseAuth mAuth;
+    DatabaseReference reference, RootRef;
 
     ImageButton btn_send;
     EditText text_send;
@@ -57,12 +60,19 @@ public class ChatActivity extends AppCompatActivity {
         intent = getIntent();
         String userid = intent.getStringExtra("userid");
 
+        mAuth= FirebaseAuth.getInstance();
+        currentUserID=mAuth.getCurrentUser().getUid();
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String msg = text_send.getText().toString();
                 if(!msg.equals("")){
-                    sendMessage(fuser.getUid(),userid, msg);
+                    sendMessage(fuser.getUid(),receiverName, msg);
                 }else {
                     Toast.makeText(ChatActivity.this, "You can't send empty message.", Toast.LENGTH_SHORT).show();
                 }
@@ -70,27 +80,47 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-//                if(user.getImageURL().equals("default")){
-//
-//                }
+
+                // retrieve user info will call the User Name
+                RetrieveUserInfo();
+
                 readMessages(fuser.getUid(), userid);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+    }
 
+    private void RetrieveUserInfo() {
+        RootRef.child("Users").child(currentUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if((dataSnapshot.exists()) && (dataSnapshot.hasChild("fname") && (dataSnapshot.hasChild("lname")))){ // if user is updated his profile then
 
+                            String retrieveFirstName = dataSnapshot.child("fname").getValue().toString();
+                            String retrieveLastName = dataSnapshot.child("lname").getValue().toString();
+                            String retrieveUserNumber = dataSnapshot.child("number").getValue().toString();
 
+                            // retrieveUserName will be shown to userName EditText again
+//                            fnInput.setText(retrieveFirstName);
+                            receiverName= retrieveFirstName +" " + retrieveLastName ;
+//                            phInput.setText(retrieveUserNumber);
+
+                        }else{ // if none of these exist
+                            Toast.makeText(ChatActivity.this, "Please update your information...!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
     }
 
     private void sendMessage(String sender, String receiver, String message){
@@ -115,13 +145,6 @@ public class ChatActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren() ){
                     Chat chat = snapshot.getValue(Chat.class);
 
-//                    if(chat.getReceiver().equals(myid) && chat.getSender().equals(userid) ||
-//                    chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
-//
-//                        mchat.add(chat);
-//                    }
-
-                    // this will show the other users msg as well
                     mchat.add(chat);
 
                     messageAdapter = new MessageAdapter(ChatActivity.this, mchat);

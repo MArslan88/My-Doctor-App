@@ -68,12 +68,12 @@ public class ProfileActivity extends AppCompatActivity {
                         if((dataSnapshot.exists()) && (dataSnapshot.hasChild("fname") && (dataSnapshot.hasChild("lname")))){ // if user is updated his profile then
 
                             String retrieveFirstName = dataSnapshot.child("fname").getValue().toString();
-                            String retrieveLastAddress = dataSnapshot.child("lname").getValue().toString();
+                            String retrieveLastName = dataSnapshot.child("lname").getValue().toString();
                             String retrieveUserNumber = dataSnapshot.child("number").getValue().toString();
 
                             // retrieveUserName will be shown to userName EditText again
                             fnInput.setText(retrieveFirstName);
-                            lnInput.setText(retrieveLastAddress);
+                            lnInput.setText(retrieveLastName);
                             phInput.setText(retrieveUserNumber);
 
                         }else{ // if none of these exist
