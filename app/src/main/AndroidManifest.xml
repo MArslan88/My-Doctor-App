@@ -17,32 +17,24 @@
         <activity android:name=".covidtracker.CovidTrackerActivity" />
         <activity android:name=".ChatActivity" />
         <activity
-            android:name=".PrecautionsDetailActivity"
-            android:parentActivityName=".PrecautionsActivity" />
+            android:name=".PrecautionsDetailActivity"/>
         <activity
-            android:name=".PrecautionsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".PrecautionsActivity" />
         <activity
-            android:name=".TipsDetailActivity"
-            android:parentActivityName=".HealthTipsActivity" />
+            android:name=".TipsDetailActivity" />
         <activity
-            android:name=".HealthTipsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".HealthTipsActivity" />
         <activity
-            android:name=".GuidelinesActivity"
-            android:parentActivityName=".PrevGuidelineActivity" />
+            android:name=".GuidelinesActivity" />
         <activity
-            android:name=".PrevGuidelineActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".PrevGuidelineActivity" />
         <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".HomeTreatmentActivity" />
+            android:name=".DetailActivity" />
         <activity
-            android:name=".HomeTreatmentActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".HomeTreatmentActivity" />
         <activity
-            android:name=".HealthDiaryActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".HealthDiaryActivity" />
+
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OnboardingActivity" />
         <activity android:name=".LoginActivity" />

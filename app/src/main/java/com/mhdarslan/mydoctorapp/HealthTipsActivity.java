@@ -1,9 +1,11 @@
 package com.mhdarslan.mydoctorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ public class HealthTipsActivity extends AppCompatActivity {
 
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle("Health Tips");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         healthTips_lv = findViewById(R.id.healthTips_lv);
 
@@ -63,5 +67,12 @@ public class HealthTipsActivity extends AppCompatActivity {
         // ArrayAdapter
         GuidelineAdapter guidelineAdapter = new GuidelineAdapter(this,tipsModels);
         healthTips_lv.setAdapter(guidelineAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

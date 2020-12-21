@@ -38,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         // Title of the activity
         getSupportActionBar().setTitle("Profile");
 
+
         // Initialization
         mAuth= FirebaseAuth.getInstance();
         currentUserID=mAuth.getCurrentUser().getUid();

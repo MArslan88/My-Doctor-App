@@ -1,9 +1,11 @@
 package com.mhdarslan.mydoctorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ public class PrevGuidelineActivity extends AppCompatActivity {
 
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle("Prevention Guideline");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         prev_guide_lv = findViewById(R.id.prev_guide_lv);
 
@@ -65,5 +69,12 @@ public class PrevGuidelineActivity extends AppCompatActivity {
         // ArrayAdapter
         GuidelineAdapter guidelineAdapter = new GuidelineAdapter(this,guidelinesModels);
         prev_guide_lv.setAdapter(guidelineAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

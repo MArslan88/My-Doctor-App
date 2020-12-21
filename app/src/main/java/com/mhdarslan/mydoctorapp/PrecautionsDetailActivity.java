@@ -1,9 +1,11 @@
 package com.mhdarslan.mydoctorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class PrecautionsDetailActivity extends AppCompatActivity {
@@ -22,6 +24,8 @@ public class PrecautionsDetailActivity extends AppCompatActivity {
 
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle(PrecautionsActivity.headings[positionPrecautions]);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // Initialization
         precautionHeadingTxt = findViewById(R.id.precautionHeadingTxt);
@@ -69,5 +73,12 @@ public class PrecautionsDetailActivity extends AppCompatActivity {
 
         precautionHeadingTxt.setText(PrecautionsActivity.headings[positionPrecautions]);
         precautionText.setText(precautionsArr[positionPrecautions]);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

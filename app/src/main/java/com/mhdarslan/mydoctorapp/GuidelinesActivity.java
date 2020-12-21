@@ -1,9 +1,11 @@
 package com.mhdarslan.mydoctorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class GuidelinesActivity extends AppCompatActivity {
@@ -18,6 +20,8 @@ public class GuidelinesActivity extends AppCompatActivity {
 
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle("Guidelines");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // get Intent position data from the previous Activity
         Intent intent = getIntent();
@@ -80,5 +84,12 @@ public class GuidelinesActivity extends AppCompatActivity {
 
         guidelineHeadingTxt.setText(PrevGuidelineActivity.headings[positionTips]);
         guidelinesText.setText(guidelinesArr[positionTips]);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

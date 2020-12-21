@@ -1,9 +1,11 @@
 package com.mhdarslan.mydoctorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -30,6 +32,8 @@ public class DetailActivity extends AppCompatActivity {
 
         // Title of the Activity according to Intent position
         getSupportActionBar().setTitle(HomeTreatmentActivity.listOfDiseases[positionDiseases]);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // Main heading Text according to Intent position
         detailsHeadingTxt.setText("Get to know about \n"+HomeTreatmentActivity.listOfDiseases[positionDiseases]);
@@ -678,5 +682,12 @@ public class DetailActivity extends AppCompatActivity {
         tibeNabviText.setText(tibeNabviData[positionDiseases]);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }
