@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.leo.simplearcloader.SimpleArcLoader;
 
 import java.util.HashMap;
 
@@ -29,6 +32,10 @@ public class ProfileActivity extends AppCompatActivity {
     private String currentUserID;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
+    private Boolean IS_DATA_FETCHED = false;
+
+    SimpleArcLoader simpleArcLoader;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,9 @@ public class ProfileActivity extends AppCompatActivity {
         phInput = findViewById(R.id.phInput);
         updateBtn = findViewById(R.id.updateBtn);
 
+        simpleArcLoader = findViewById(R.id.loader);
+        scrollView = findViewById(R.id.scrollProfile);
+
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +72,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void RetrieveUserInfo() {
+        // Start the Arcloader while App is fetching the User Info from the server
+        simpleArcLoader.start();
+
         RootRef.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -75,7 +88,16 @@ public class ProfileActivity extends AppCompatActivity {
                             // retrieveUserName will be shown to userName EditText again
                             fnInput.setText(retrieveFirstName);
                             lnInput.setText(retrieveLastName);
-                            phInput.setText(retrieveUserNumber);
+                            phInput.setText(retrieveUserNumber);                            
+                           
+                            IS_DATA_FETCHED = true;
+
+                            // stop the SimpleArc Loader
+                            simpleArcLoader.stop();
+
+                            // now hide the Arc Loader and show the ScrollView and its contents
+                            simpleArcLoader.setVisibility(View.GONE);
+                            scrollView.setVisibility(View.VISIBLE);
 
                         }else{ // if none of these exist
                             Toast.makeText(ProfileActivity.this, "Please update your information...!", Toast.LENGTH_SHORT).show();
@@ -85,6 +107,20 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
+
+
+        // Post Delay Handler for checking Internet connectivity
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!IS_DATA_FETCHED == true){
+                    Toast.makeText(ProfileActivity.this, "Please check your Internet connection...!", Toast.LENGTH_SHORT).show();
+                }else {
+//                    Toast.makeText(ProfileActivity.this, "Connected...!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 5000);
     }
 
     private void UpdateProfile() {
