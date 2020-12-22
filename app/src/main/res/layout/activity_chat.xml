@@ -13,6 +13,14 @@
         android:layout_alignParentTop="true"
         android:layout_above="@+id/bottom"/>
 
+    <com.leo.simplearcloader.SimpleArcLoader
+        android:id="@+id/loader"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:arc_style="simple_arc"
+        android:visibility="visible"
+        android:layout_centerInParent="true"/>
+
     <RelativeLayout
         android:id="@+id/bottom"
         android:layout_width="match_parent"

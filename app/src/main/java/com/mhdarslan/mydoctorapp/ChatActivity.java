@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.leo.simplearcloader.SimpleArcLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     Intent intent;
+    SimpleArcLoader simpleArcLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Chat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        simpleArcLoader = findViewById(R.id.loader);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -141,6 +145,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void readMessages(String myid, String userid){
+
+        simpleArcLoader.start();
         mchat = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Chats");
@@ -155,6 +161,10 @@ public class ChatActivity extends AppCompatActivity {
 
                     messageAdapter = new MessageAdapter(ChatActivity.this, mchat);
                     recyclerView.setAdapter(messageAdapter);
+
+                    // Stop the Arc Loader
+                    simpleArcLoader.stop();
+                    simpleArcLoader.setVisibility(View.GONE);
                 }
             }
 
