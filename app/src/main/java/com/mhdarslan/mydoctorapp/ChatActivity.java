@@ -146,7 +146,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private void readMessages(String myid, String userid){
 
+        // Start the Arcloader while App is fetching the chat msgs from the server
         simpleArcLoader.start();
+
         mchat = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Chats");
