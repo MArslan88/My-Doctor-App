@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference RootRef;
 
     private CardView covidTrackerCardView, chatCardView,healthDiaryCardView,
-            homeTreatmentCardView, prevGuideCardView, healthTipsCardView, disAvoidanceCardView;
+            homeTreatmentCardView, prevGuideCardView, healthTipsCardView, precautionsCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         homeTreatmentCardView = findViewById(R.id.homeTreatmentCardView);
         prevGuideCardView = findViewById(R.id.prevGuideCardView);
         healthTipsCardView = findViewById(R.id.healthTipsCardView);
-        disAvoidanceCardView = findViewById(R.id.disAvoidanceCardView);
+        precautionsCardView = findViewById(R.id.disAvoidanceCardView);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -109,11 +109,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // disAvoidanceCardView click listener
-        disAvoidanceCardView.setOnClickListener(new View.OnClickListener() {
+        precautionsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent disAvoidanceIntent = new Intent(getApplicationContext(),PrecautionsActivity.class);
-                startActivity(disAvoidanceIntent);
+                Intent precautionsIntent = new Intent(getApplicationContext(),PrecautionsActivity.class);
+                startActivity(precautionsIntent);
             }
         });
 

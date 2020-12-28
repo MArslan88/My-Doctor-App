@@ -680,8 +680,6 @@ public class DetailActivity extends AppCompatActivity {
         symptomsText.setText(symptomsData[positionDiseases]);
         homeRemedyText.setText(homeRemedyData[positionDiseases]);
         tibeNabviText.setText(tibeNabviData[positionDiseases]);
-
-
     }
 
     @Override

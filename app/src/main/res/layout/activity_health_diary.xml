@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/homeDiaryInput"
+        android:id="@+id/healthDiaryInput"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
@@ -22,7 +22,7 @@
         android:background="@drawable/input"/>
 
     <Button
-        android:id="@+id/homeDiaryUpdateBtn"
+        android:id="@+id/healthDiaryUpdateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update"

@@ -25,8 +25,8 @@ import java.util.HashMap;
 
 public class HealthDiaryActivity extends AppCompatActivity {
 
-    private Button homeDiaryUpdateBtn;
-    private EditText homeDiaryInput;
+    private Button healthDiaryUpdateBtn;
+    private EditText healthDiaryInput;
     private String currentUserID;
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
@@ -37,7 +37,7 @@ public class HealthDiaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_health_diary);
 
         // Title of the activity
-        getSupportActionBar().setTitle("Home Diary");
+        getSupportActionBar().setTitle("Health Diary");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -47,10 +47,10 @@ public class HealthDiaryActivity extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.keepSynced(true);
 
-        homeDiaryInput = findViewById(R.id.homeDiaryInput);
-        homeDiaryUpdateBtn = findViewById(R.id.homeDiaryUpdateBtn);
+        healthDiaryInput = findViewById(R.id.healthDiaryInput);
+        healthDiaryUpdateBtn = findViewById(R.id.healthDiaryUpdateBtn);
 
-        homeDiaryUpdateBtn.setOnClickListener(new View.OnClickListener() {
+        healthDiaryUpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdateNote();
@@ -59,9 +59,6 @@ public class HealthDiaryActivity extends AppCompatActivity {
 
         // Retrieve Note Info
         RetrieveNoteInfo();
-
-
-
     }
 
     private void RetrieveNoteInfo() {
@@ -74,7 +71,7 @@ public class HealthDiaryActivity extends AppCompatActivity {
                             String retrieveDiaryNote = dataSnapshot.child("note").getValue().toString();
 
                             // retrieveUserName will be shown to userName EditText again
-                            homeDiaryInput.setText(retrieveDiaryNote);
+                            healthDiaryInput.setText(retrieveDiaryNote);
 
                         }else{ // if none of these exist
                             Toast.makeText(HealthDiaryActivity.this, "Please update your information...!", Toast.LENGTH_SHORT).show();
@@ -87,7 +84,7 @@ public class HealthDiaryActivity extends AppCompatActivity {
     }
 
     private void UpdateNote() {
-        String diaryNote = homeDiaryInput.getText().toString();
+        String diaryNote = healthDiaryInput.getText().toString();
 
         if(TextUtils.isEmpty(diaryNote)){
             Toast.makeText(this, "Please write your Note first.", Toast.LENGTH_SHORT).show();
