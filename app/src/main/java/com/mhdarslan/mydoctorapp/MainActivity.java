@@ -205,10 +205,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendUserToOnBoardingActivity() {
-        Intent loginIntenet = new Intent(MainActivity.this,OnboardingActivity.class);
+        Intent onBoardingIntenet = new Intent(MainActivity.this,OnboardingActivity.class);
         // this will stop the user to get again the MainActivity when user press the back button
-        loginIntenet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(loginIntenet);
+        onBoardingIntenet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(onBoardingIntenet);
         finish();
     }
 

@@ -86,13 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-//                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                            phoneNumber,        // Phone number to verify
-//                            60,                 // Timeout duration
-//                            TimeUnit.SECONDS,   // Unit of timeout
-//                            LoginActivity.this,  // Activity (for callback binding)
-//                            callbacks);        // OnVerificationStateChangedCallbacksPhoneAuthActivity.java
-
                     PhoneAuthOptions options =
                             PhoneAuthOptions.newBuilder(mAuth)
                                     .setPhoneNumber(phoneNumber)       // Phone number to verify
@@ -132,11 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                     }else {
 //                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
 //                        signInWithPhoneAuthCredential(credential);
-
                     }
-                    
                 }
-
             }
         });
 
@@ -185,7 +175,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
     }
-
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
