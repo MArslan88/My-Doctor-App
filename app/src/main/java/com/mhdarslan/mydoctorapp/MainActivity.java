@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(currentUser == null){ // this means the user is not Authenticated so we will send him first at login activity
+        if(currentUser == null){ // this means the user is not Authenticated so we will send him first at OnBoarding and login activity
             sendUserToOnBoardingActivity();
         }else{ // if user is already logedIn
             VerifyUserExistance();
