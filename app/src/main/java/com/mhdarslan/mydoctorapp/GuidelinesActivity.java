@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class GuidelinesActivity extends AppCompatActivity {
 
-    private int positionTips;
+    private int positionGuideline;
     private TextView guidelineHeadingTxt, guidelinesText;
 
     @Override
@@ -25,7 +25,7 @@ public class GuidelinesActivity extends AppCompatActivity {
 
         // get Intent position data from the previous Activity
         Intent intent = getIntent();
-        positionTips = intent.getIntExtra("position",0);
+        positionGuideline = intent.getIntExtra("position",0);
 
         // Initialization
         guidelineHeadingTxt = findViewById(R.id.guidelineHeadingTxt);
@@ -82,8 +82,8 @@ public class GuidelinesActivity extends AppCompatActivity {
                         "•\tSelf-quarantine if sick\n"
         };
 
-        guidelineHeadingTxt.setText(PrevGuidelineActivity.headings[positionTips]);
-        guidelinesText.setText(guidelinesArr[positionTips]);
+        guidelineHeadingTxt.setText(PrevGuidelineActivity.headings[positionGuideline]);
+        guidelinesText.setText(guidelinesArr[positionGuideline]);
     }
 
     @Override
