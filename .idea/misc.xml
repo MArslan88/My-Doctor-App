@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/drawable-xhdpi/input.xml" value="0.219" />
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/layout/activity_chat.xml" value="0.2250814332247557" />
         <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/layout/activity_main2.xml" value="0.13453947368421051" />
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/layout/activity_profile.xml" value="0.13453947368421051" />
+        <entry key="..\:/Users/gery_/AndroidStudioProjects/MyDoctorApp/app/src/main/res/menu/options_menu.xml" value="0.22730263157894737" />
       </map>
     </option>
   </component>
