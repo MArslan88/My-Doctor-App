@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String phoneNumber = InputPhoneNumber.getText().toString();
+                String phoneNumber = InputPhoneNumber.getText().toString().trim();
                 if(TextUtils.isEmpty(phoneNumber)){
                     Toast.makeText(LoginActivity.this, "Please enter your phone number...", Toast.LENGTH_SHORT).show();
 
